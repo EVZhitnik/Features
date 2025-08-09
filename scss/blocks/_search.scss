@@ -1,0 +1,52 @@
+@use 'helpers' as *;
+
+.search {
+    &__body {
+        @include transition(width);
+
+        position: relative;
+        width: rem(40);
+        margin: 0 auto;
+
+        @include hover {
+            width: rem(250);
+
+            .search__button {
+                transform: translateY(-50%) rotate(360deg);
+            }
+
+            .search__input {
+                opacity: 1;
+            }
+        }
+    }
+
+    &__button {
+        @include flexbox(true, center, center);
+        @include square(rem(30));
+        @include abs-position(vertical);
+        @include transition(transform);
+
+        left: rem(5);
+        z-index: 100;
+        border: rem(1) solid var(--color-dark);
+        border-radius: 50%;
+        cursor: pointer;
+    }
+
+    &__input {
+        @include transition(opacity);
+
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: rem(10) rem(10) rem(10) rem(40);
+        font-family: var(--font-family-base);
+        background-color: var(--color-dark);
+        color: var(--color-white);
+        border: none;
+        border-radius: rem(20);
+        outline: none;
+        opacity: 0;
+    }
+}

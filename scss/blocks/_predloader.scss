@@ -5,7 +5,6 @@
         @include flexbox(true, center, center);
 
         flex-direction: column;
-        min-height: 150px;
     }
 
     &__body {
