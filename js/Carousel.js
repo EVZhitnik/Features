@@ -9,16 +9,16 @@ class Carousel {
 
     constructor (rootElement) {
         this.rootElement = rootElement;
-        this.content = this.rootElement.querySelector(this.selectors.content);
-        this.buttonPrev = this.rootElement.querySelector(this.selectors.buttonPrev);
-        this.buttonNext = this.rootElement.querySelector(this.selectors.buttonNext);
-        this.slides = Array.from(this.content.children);
+        this.contentElement = this.rootElement.querySelector(this.selectors.content);
+        this.buttonPrevElement = this.rootElement.querySelector(this.selectors.buttonPrev);
+        this.buttonNextElement = this.rootElement.querySelector(this.selectors.buttonNext);
+        this.slides = Array.from(this.contentElement.children);
         this.currentIndex = 0;
         this.init();
     }
 
     updateCarousel = () => {
-        this.content.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+        this.contentElement.style.transform = `translateX(-${this.currentIndex * 100}%)`;
     }
 
     clickButtonPrev = () => {
@@ -34,8 +34,8 @@ class Carousel {
     }
 
     init() {
-        this.buttonPrev.addEventListener('click', this.clickButtonPrev); 
-        this.buttonNext.addEventListener('click', this.clickButtonNext); 
+        this.buttonPrevElement.addEventListener('click', this.clickButtonPrev); 
+        this.buttonNextElement.addEventListener('click', this.clickButtonNext); 
     }
 }
 

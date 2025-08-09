@@ -1,0 +1,81 @@
+@use 'helpers' as *;
+
+.vercarusel {
+    &__body {
+        @include flexbox(true, center, center);
+    }
+
+    &__hero {
+       position: relative;
+        width: rem(300);
+        display: flex;
+        justify-content: center;
+        flex-direction: column; 
+    }
+
+    &__item {
+        display: flex;
+        align-items: center;
+        position: absolute;
+        width: 100%;
+        padding-inline: rem(12);
+        opacity: 0;
+        filter: drop-shadow(0 rem(2) rem(2) #555);
+        will-change: transform, opacity;
+        --animation-delay-fraction: 3s;
+        animation: carousel-animate-vertical 27s linear infinite;
+        animation-delay: calc(var(--animation-delay-fraction) * (var(--index) - 2));
+
+        @keyframes carousel-animate-vertical {
+            0% {
+                translate: 0 100%;
+                scale: 0.5;
+                opacity: 0;
+                visibility: hidden;
+            }
+            3%, 11% {
+                translate: 0 100%;
+                scale: 0.7;
+                opacity: 0.4;
+                visibility: visible;
+            }
+            14%, 22% {
+                translate: 0 0;
+                scale: 1;
+                opacity: 1;
+                visibility: visible;
+            }
+            25%, 33% {
+                translate: 0 -100%;
+                scale: 0.7;
+                opacity: 0.4;
+                visibility: visible;
+            }
+            36% {
+                translate: 0 -100%;
+                scale: 0.5;
+                opacity: 0;
+                visibility: visible;
+            }
+            100% {
+                translate: 0 -100%;
+                scale: 0.5;
+                opacity: 0;
+                visibility: visible;
+            }
+        }
+
+        &-body {
+            width: 100%;
+            background-color: var(--color-white);
+            border-radius: rem(8);
+            padding: rem(16) rem(20);
+        }
+    }
+
+    &__text {
+        text-transform: uppercase;
+        font-size: rem(20);
+        margin-top: rem(10);
+    }
+}

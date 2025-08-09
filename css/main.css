@@ -379,6 +379,9 @@ section:not(:last-child) {
 .margin:not(:last-child) {
   margin-bottom: 1.875rem;
 }
+.margin--vercarusel:not(:last-child) {
+  margin-bottom: 9.375rem;
+}
 
 .rotating-card__inner {
   display: flex;
@@ -552,6 +555,81 @@ section:not(:last-child) {
   .carousel__button:active {
     background-color: rgba(0, 0, 0, 0.8);
   }
+}
+
+.vercarusel__body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.vercarusel__hero {
+  position: relative;
+  width: 18.75rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.vercarusel__item {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  padding-inline: 0.75rem;
+  opacity: 0;
+  filter: drop-shadow(0 0.125rem 0.125rem #555);
+  will-change: transform, opacity;
+  --animation-delay-fraction: 3s;
+  animation: carousel-animate-vertical 27s linear infinite;
+  animation-delay: calc(var(--animation-delay-fraction) * (var(--index) - 2));
+}
+@keyframes carousel-animate-vertical {
+  0% {
+    translate: 0 100%;
+    scale: 0.5;
+    opacity: 0;
+    visibility: hidden;
+  }
+  3%, 11% {
+    translate: 0 100%;
+    scale: 0.7;
+    opacity: 0.4;
+    visibility: visible;
+  }
+  14%, 22% {
+    translate: 0 0;
+    scale: 1;
+    opacity: 1;
+    visibility: visible;
+  }
+  25%, 33% {
+    translate: 0 -100%;
+    scale: 0.7;
+    opacity: 0.4;
+    visibility: visible;
+  }
+  36% {
+    translate: 0 -100%;
+    scale: 0.5;
+    opacity: 0;
+    visibility: visible;
+  }
+  100% {
+    translate: 0 -100%;
+    scale: 0.5;
+    opacity: 0;
+    visibility: visible;
+  }
+}
+.vercarusel__item-body {
+  width: 100%;
+  background-color: var(--color-white);
+  border-radius: 0.5rem;
+  padding: 1rem 1.25rem;
+}
+.vercarusel__text {
+  text-transform: uppercase;
+  font-size: 1.25rem;
+  margin-top: 0.625rem;
 }
 
 /*# sourceMappingURL=main.css.map */

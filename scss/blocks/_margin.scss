@@ -6,4 +6,10 @@
     &:not(:last-child) {
         margin-bottom: rem(30);
     }
+
+    &--vercarusel {
+        &:not(:last-child) {
+            margin-bottom: rem(150);
+        }
+    }
 }
