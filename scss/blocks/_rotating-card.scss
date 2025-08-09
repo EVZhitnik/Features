@@ -1,0 +1,49 @@
+@use 'helpers' as *;
+
+.rotating-card {
+    &__inner {
+        @include flexbox(true, center, center);
+
+        flex-direction: column;
+    }
+
+    &__body {
+        width: rem(300);
+        height: rem(200);
+        perspective: rem(1000);
+    }
+
+    &__content {
+        @include square(100%);
+        @include transition(transform);
+
+        position: relative;
+        transform-style: preserve-3d;
+        transform: rotateY(0deg);
+
+        @include hover {
+            transform: rotateY(180deg);
+        }
+    }
+
+    &__face {
+        @include flexbox(true, center, center);
+        @include square(100%);
+
+        position: absolute;
+        backface-visibility: hidden;
+        border-radius: rem(12);
+        box-shadow: 0 rem(4) rem(8) rgb(0, 0, 0, 0.4);
+    }
+
+    &__front {
+        background-color: #f39c12;
+        color: var(--color-white);
+    }
+
+    &__back {
+        background-color: #e74c3c;
+        color: var(--color-white);
+        transform: rotateY(180deg);
+    }
+}

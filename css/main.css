@@ -276,6 +276,12 @@ body {
   background-color: var(--color-light);
 }
 
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+  color: var(--color-dark-grey);
+}
+
 h1, .h1 {
   font-size: clamp(1.5rem, 1.3388429752rem + 0.6611570248vw, 2rem);
 }
@@ -315,37 +321,31 @@ a[class] {
   text-decoration: none;
 }
 
-.preloader__title {
-  text-align: center;
-}
-.preloader__title:not(:last-child) {
-  margin-bottom: 1.875rem;
-}
-.preloader__inner {
+.predloader__inner {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   min-height: 150px;
 }
-.preloader__body {
+.predloader__body {
   display: flex;
   gap: 0.625rem;
 }
-.preloader__body:not(:last-child) {
+.predloader__body:not(:last-child) {
   margin-bottom: 1.875rem;
 }
-.preloader__point {
+.predloader__point {
   width: 0.9375rem;
   height: 0.9375rem;
   background-color: var(--color-blue);
   border-radius: 50%;
   animation: bounce 0.6s infinite alternate;
 }
-.preloader__point:nth-child(2) {
+.predloader__point:nth-child(2) {
   animation-delay: 0.2s;
 }
-.preloader__point:nth-child(3) {
+.predloader__point:nth-child(3) {
   animation-delay: 0.4s;
 }
 @keyframes bounce {
@@ -358,7 +358,7 @@ a[class] {
     opacity: 1;
   }
 }
-.preloader__spinner {
+.predloader__spinner {
   width: 3.125rem;
   height: 3.125rem;
   border: 0.3125rem solid var(--color-grey);
@@ -373,6 +373,63 @@ a[class] {
   to {
     transform: rotate(360deg);
   }
+}
+
+.margin {
+  text-align: center;
+}
+.margin:not(:last-child) {
+  margin-bottom: 1.875rem;
+}
+
+.rotating-card__inner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.rotating-card__body {
+  width: 18.75rem;
+  height: 12.5rem;
+  perspective: 62.5rem;
+}
+.rotating-card__content {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+}
+@media (any-hover: hover) {
+  .rotating-card__content:hover {
+    transform: rotateY(180deg);
+  }
+}
+@media (any-hover: none) {
+  .rotating-card__content:active {
+    transform: rotateY(180deg);
+  }
+}
+.rotating-card__face {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  border-radius: 0.75rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4);
+}
+.rotating-card__front {
+  background-color: #f39c12;
+  color: var(--color-white);
+}
+.rotating-card__back {
+  background-color: #e74c3c;
+  color: var(--color-white);
+  transform: rotateY(180deg);
 }
 
 /*# sourceMappingURL=main.css.map */

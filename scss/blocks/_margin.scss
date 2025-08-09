@@ -1,0 +1,9 @@
+@use 'helpers' as *;
+
+.margin {
+    text-align: center;
+    
+    &:not(:last-child) {
+        margin-bottom: rem(30);
+    }
+}

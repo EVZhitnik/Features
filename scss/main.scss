@@ -4,7 +4,10 @@
 @use 'utils';
 @use 'globals';
 
-@use 'blocks/preloader.scss';
+@use 'blocks/predloader.scss';
+@use 'blocks/margin.scss';
+
+@use 'blocks/rotating-card.scss';
 
 // .header,
 // main > *:not(:last-child),

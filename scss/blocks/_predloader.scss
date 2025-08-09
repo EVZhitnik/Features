@@ -1,14 +1,6 @@
 @use 'helpers' as *;
 
-.preloader {
-    &__title {
-        text-align: center;
-        
-        &:not(:last-child) {
-            margin-bottom: rem(30);
-        }
-    }
-
+.predloader {
     &__inner {
         @include flexbox(true, center, center);
 

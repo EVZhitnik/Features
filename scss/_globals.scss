@@ -16,6 +16,12 @@ body {
     background-color: var(--color-light);
 }
 
+h1, .h1,
+h2, .h2,
+h3, .h3 {
+    color: var(--color-dark-grey)
+}
+
 h1, .h1 {
     @include fluid-text(32, 24);
 }
