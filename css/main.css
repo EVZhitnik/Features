@@ -489,4 +489,69 @@ section:not(:last-child) {
   opacity: 0;
 }
 
+.carousel__inner {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  max-width: 37.5rem;
+  min-height: 10.625rem;
+  margin: 0 auto;
+}
+.carousel__body {
+  width: 100%;
+  max-width: 37.5rem;
+  height: 7.5rem;
+  overflow: hidden;
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4);
+  background-color: var(--color-white);
+}
+.carousel__content {
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+}
+.carousel__slide {
+  display: flex;
+  justify-content: space-between;
+  min-width: 100%;
+  padding: 0.625rem;
+}
+.carousel__box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 30%;
+  height: 6.25rem;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  border-radius: 0.5rem;
+}
+.carousel__buttons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+.carousel__button {
+  width: 1.875rem;
+  height: 1.875rem;
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: var(--color-white);
+  border-radius: 50%;
+  cursor: pointer;
+}
+@media (any-hover: hover) {
+  .carousel__button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+@media (any-hover: none) {
+  .carousel__button:active {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}
+
 /*# sourceMappingURL=main.css.map */
