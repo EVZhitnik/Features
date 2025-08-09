@@ -1,0 +1,25 @@
+@use 'helpers' as *;
+
+:root {
+    --color-white: #FFFFFF;
+    --color-grey: #CCCCCC;
+    --color-dark-grey: #666666;
+    --color-dark: #414141;
+    --color-blue: #0070A0;
+    --color-accent: #FFD11A;
+
+    --gradient: linear-gradient(
+        45deg, 
+        var(--color-dark-15) 64%,
+        var(--color-accent) 136%
+    );
+
+    --shadow: 0 0 0 #{rem(4)} #191919;
+
+    --font-family-base: 'Bitter', sans-serif;
+
+    --container-width: #{rem(1600)};
+    --container-padding-x: #{rem(16)};
+
+    --transition-duration: 0.2s;
+}
