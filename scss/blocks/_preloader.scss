@@ -1,0 +1,72 @@
+@use 'helpers' as *;
+
+.preloader {
+    &__title {
+        text-align: center;
+        
+        &:not(:last-child) {
+            margin-bottom: rem(30);
+        }
+    }
+
+    &__inner {
+        @include flexbox(true, center, center);
+
+        flex-direction: column;
+        min-height: 150px;
+    }
+
+    &__body {
+        display: flex;
+        gap: rem(10);
+
+        &:not(:last-child) {
+            margin-bottom: rem(30);
+        }
+    }
+
+    &__point {
+        @include square(rem(15));
+
+        background-color: var(--color-blue);
+        border-radius: 50%;
+        animation: bounce 0.6s infinite alternate;
+
+        &:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        &:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        @keyframes bounce {
+            from {
+                transform: translateY(0);
+                opacity: 0.6;
+            }
+            to {
+                transform: translateY(rem(-20));
+                opacity: 1;
+            }
+        }
+    }
+
+    &__spinner {
+        @include square(rem(50));
+
+        border: rem(5) solid var(--color-grey);
+        border-top-color: var(--color-blue);
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
