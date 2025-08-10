@@ -1,5 +1,7 @@
 import Carousel from './Carousel.js';
-import Vercarusel from './Vercarusel.js';
+import Vercarousel from './Vercarousel.js';
+import Accordion from './Accordion.js'
 
 new Carousel();
-new Vercarusel();
+new Vercarousel();
+new Accordion();

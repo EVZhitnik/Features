@@ -1,8 +1,8 @@
-const rootSelector = '[data-js-vercarusel]';
+const rootSelector = '[data-js-vercarousel]';
 
 class Carousel {
     selectors = {
-        hero: '[data-js-vercarusel-hero]',
+        hero: '[data-js-vercarousel-hero]',
     }
 
     constructor (rootElement) {
@@ -21,11 +21,11 @@ class Carousel {
     init() {
         this.items.forEach((item, index) => {
             const vercaruselItem = document.createElement('div');
-            vercaruselItem.classList.add('vercarusel__item');
+            vercaruselItem.classList.add('vercarousel__item');
             vercaruselItem.style.setProperty('--index', index + 1);
             vercaruselItem.innerHTML = `
-                <div class="vercarusel__item-body">
-                <p class="vercarusel__text">${item.title}</p>
+                <div class="vercarousel__item-body">
+                <p class="vercarousel__text">${item.title}</p>
                 <p>Unicode: ${item.unicode}</p>
                 </div>`;
             this.heroElement.appendChild(vercaruselItem);

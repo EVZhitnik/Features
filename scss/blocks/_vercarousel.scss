@@ -1,8 +1,10 @@
 @use 'helpers' as *;
 
-.vercarusel {
+.vercarousel {
     &__body {
         @include flexbox(true, center, center);
+
+        margin-bottom: rem(150);
     }
 
     &__hero {

@@ -1,0 +1,74 @@
+@use 'helpers' as *;
+
+.accordion {
+    &__body {
+        width: rem(400);
+        background-color: var(--color-dark);
+        color: var(--color-white);
+        border-radius: rem(8);
+        overflow: hidden;
+        margin: 0 auto;
+    }
+
+    &__section {
+        @include transition(background-color, transform);
+
+        padding: rem(15);
+        border-bottom: 1px solid var(--color-grey);
+        cursor: pointer;
+
+        @include hover {
+            background-color: var(--color-blue);
+        }
+    }
+
+    &__heading {
+        position: relative;
+        font-size: rem(25);
+
+        &::before,
+        &::after {
+            @include abs-position(vertical);
+            @include flexbox(true, center, center);
+            @include transition(transform);
+            
+            content: "";
+            right: rem(15);
+            width: rem(20);
+            height: rem(2);
+            background-color: currentColor;
+
+        }
+
+        &::before {
+            transform: translateY(-50%) rotate(90deg);
+        }
+
+        &::after {
+            transform: translateY(-50%) rotate(0deg);
+        }
+
+        &.is-active::before {
+            transform: translateY(-50%) rotate(0deg);;
+        } 
+    }
+
+    &__content {
+        @include transition(max-height);
+
+        max-height: 0;
+        padding-inline: rem(15);
+        background-color: var(--color-dark-grey);
+        border-radius: rem(8);
+        overflow: hidden;
+
+        &.is-active {
+            max-height: rem(150);
+        }
+    }
+
+    &__description {
+        font-size: rem(16);
+        margin-block: rem(10);
+    }
+}

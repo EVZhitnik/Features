@@ -379,7 +379,7 @@ section:not(:last-child) {
 .margin:not(:last-child) {
   margin-bottom: 1.875rem;
 }
-.margin--vercarusel:not(:last-child) {
+.margin--vercarousel:not(:last-child) {
   margin-bottom: 9.375rem;
 }
 
@@ -557,19 +557,20 @@ section:not(:last-child) {
   }
 }
 
-.vercarusel__body {
+.vercarousel__body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 9.375rem;
 }
-.vercarusel__hero {
+.vercarousel__hero {
   position: relative;
   width: 18.75rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.vercarusel__item {
+.vercarousel__item {
   display: flex;
   align-items: center;
   position: absolute;
@@ -620,16 +621,83 @@ section:not(:last-child) {
     visibility: visible;
   }
 }
-.vercarusel__item-body {
+.vercarousel__item-body {
   width: 100%;
   background-color: var(--color-white);
   border-radius: 0.5rem;
   padding: 1rem 1.25rem;
 }
-.vercarusel__text {
+.vercarousel__text {
   text-transform: uppercase;
   font-size: 1.25rem;
   margin-top: 0.625rem;
+}
+
+.accordion__body {
+  width: 25rem;
+  background-color: var(--color-dark);
+  color: var(--color-white);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.accordion__section {
+  transition: background-color 0.2s ease-in-out, transform 0.2s ease-in-out;
+  padding: 0.9375rem;
+  border-bottom: 1px solid var(--color-grey);
+  cursor: pointer;
+}
+@media (any-hover: hover) {
+  .accordion__section:hover {
+    background-color: var(--color-blue);
+  }
+}
+@media (any-hover: none) {
+  .accordion__section:active {
+    background-color: var(--color-blue);
+  }
+}
+.accordion__heading {
+  position: relative;
+  font-size: 1.5625rem;
+}
+.accordion__heading::before, .accordion__heading::after {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+  content: "";
+  right: 0.9375rem;
+  width: 1.25rem;
+  height: 0.125rem;
+  background-color: currentColor;
+}
+.accordion__heading::before {
+  transform: translateY(-50%) rotate(90deg);
+}
+.accordion__heading::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+.accordion__heading.is-active::before {
+  transform: translateY(-50%) rotate(0deg);
+}
+.accordion__content {
+  transition: max-height 0.2s ease-in-out;
+  max-height: 0;
+  padding-inline: 0.9375rem;
+  background-color: var(--color-dark-grey);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.accordion__content.is-active {
+  max-height: 9.375rem;
+}
+.accordion__description {
+  font-size: 1rem;
+  margin-block: 0.625rem;
 }
 
 /*# sourceMappingURL=main.css.map */
