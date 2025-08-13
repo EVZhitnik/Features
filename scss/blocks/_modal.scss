@@ -1,0 +1,114 @@
+@use 'helpers' as *;
+
+.modal {
+    &__inner {
+        display: flex;
+        justify-content: center
+    }
+    &__button {
+        &-open {
+            @include flexbox(true, center, center);
+
+            font-weight: 800;
+            background-color: var(--color-blue);
+            border: none;
+            border-radius: rem(10);
+            padding: rem(7) rem(10);
+            margin: 20px;
+            cursor: pointer;
+
+            @include hover {
+                background-color: var(--color-dark-grey);
+            }
+        }
+
+        &-close {
+            @include flexbox(true, center, center);
+
+            border: none;
+            background-color: transparent;
+            cursor: pointer;
+
+            @include hover {
+                svg {
+                    path {
+                        fill: var(--color-blue)
+                    }
+                }
+            }
+        }
+    }
+
+    &__overlay {
+        @include transition(opacity, background-color, visibility);
+
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0);
+        z-index: 100;
+        visibility: hidden;
+        opacity: 0;
+        pointer-events: none;
+
+        &.is-active {
+            visibility: visible;
+            opacity: 1;
+            pointer-events: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    &__body {
+        @include transition(transform, opacity, visibility);
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0.9);
+        z-index: 110;
+        width: min(rem(800), 90vw);
+        max-height: min(rem(500), 80vh);
+        display: grid;
+        row-gap: rem(20);
+        padding: rem(20);
+        border-radius: rem(20);
+        background-color: var(--color-white);
+        opacity: 0;
+        visibility: hidden;
+        overflow: hidden;
+
+        @include mobile {
+            width: 95vw;
+            max-height: 90vh;
+        }
+
+        &.is-active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &__header {
+        @include flexbox(true, space-between, center);
+
+        column-gap: rem(20);
+    }
+
+    &__description {
+        overflow-y: scroll;
+        height: rem(300);
+
+        &::-webkit-scrollbar {
+            width: rem(6);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: var(--color-dark-grey);
+            border-radius: rem(3);
+        }
+    }
+}
