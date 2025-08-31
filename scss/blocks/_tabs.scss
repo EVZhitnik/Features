@@ -1,0 +1,113 @@
+@use 'helpers' as *;
+
+.tabs {
+    display: grid;
+    justify-items: center;
+    row-gap: rem(30);
+    
+    &__buttons {
+        display: flex;
+        justify-content: center;
+        column-gap: rem(40);
+    }
+
+    &__button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: rem(10) rem(20);
+        border: rem(2) solid var(--color-blue);
+        border-radius: rem(20);
+        background-color: var(--color-blue);
+        color: var(--color-white);
+        transform: translateY(0);
+        transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out, transform 0.1s ease-in-out;
+
+        &:hover {
+            border-color: var(--color-gray-3);
+            background-color: var(--color-gray-3);
+        }
+
+        &:active {
+            transform: translateY(-rem(5));
+        }
+    }
+
+    &__body {
+        position: relative;
+        width: rem(500);
+        height: rem(300);
+        overflow: hidden;
+        border-radius: rem(20);
+        border: var(--border);
+        box-shadow: var(--box-shadow);
+    }
+
+    &__content {
+        @include abs-position(both);
+        @include flexbox(true, center, center);
+
+        column-gap: rem(30);
+        width: 100%;
+        height: rem(300);
+        font-weight: 700;
+        color: var(--color-dark);
+        background-color: var(--color-white);
+
+        &:not(.is-visible):not(.is-back) {
+            display: none;
+        }
+
+        &.is-forward {
+            z-index: 2;
+            pointer-events: auto;
+            animation-name: tab-forward;
+            animation-duration: 0.5s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: both;
+        }
+
+        @keyframes tab-forward {
+            0% {
+                opacity: 0;
+                visibility: hidden;
+                transform: translate(-150%, -50%);
+            }
+            30% {
+                opacity: 0;
+                visibility: hidden;
+            }
+            100% {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        &.is-back {
+            z-index: 1;
+            pointer-events: none;
+            animation-name: tab-back;
+            animation-duration: 0.5s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: both;
+        }
+
+        @keyframes tab-back {
+            0% {
+                opacity: 1;
+                visibility: visible;
+                transform: translate(-50%, -50%);
+            }
+            70% {
+                opacity: 0;
+                visibility: hidden;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+                transform: translate(50%, -50%);
+            }
+        }
+    }
+}

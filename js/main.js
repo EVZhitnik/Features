@@ -6,6 +6,7 @@ import ScreenLightController from './ScreenLightController.js';
 import ModalWindow from './ModalWindow.js';
 import Notice from './Animation.js';
 import ToDoList from './ToDoList.js';
+import Tabs from './Tabs.js';
 
 new Carousel();
 new Vercarousel();
@@ -15,3 +16,4 @@ new ScreenLightController();
 new ModalWindow();
 new ToDoList();
 new Notice();
+new Tabs();

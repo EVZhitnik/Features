@@ -49,7 +49,6 @@ class Todo {
 
         try {
             const parsedData = JSON.parse(rawData); 
-            console.log(parsedData);
 
             return Array.isArray(parsedData) ? parsedData : [];
         } catch {

@@ -1098,7 +1098,6 @@ section:not(:last-child) {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 6.25rem 1.875rem;
   background-color: var(--color-gray-1);
 }
 .todo__body {
@@ -1349,10 +1348,109 @@ section:not(:last-child) {
   pointer-events: none;
 }
 
-.header,
-main > *:not(:last-child),
-.footer {
-  display: none !important;
+.tabs {
+  display: grid;
+  justify-items: center;
+  row-gap: 1.875rem;
+}
+.tabs__buttons {
+  display: flex;
+  justify-content: center;
+  column-gap: 2.5rem;
+}
+.tabs__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.625rem 1.25rem;
+  border: 0.125rem solid var(--color-blue);
+  border-radius: 1.25rem;
+  background-color: var(--color-blue);
+  color: var(--color-white);
+  transform: translateY(0);
+  transition: border 0.1s ease-in-out, background-color 0.1s ease-in-out, transform 0.1s ease-in-out;
+}
+.tabs__button:hover {
+  border-color: var(--color-gray-3);
+  background-color: var(--color-gray-3);
+}
+.tabs__button:active {
+  transform: translateY(-rem(5));
+}
+.tabs__body {
+  position: relative;
+  width: 31.25rem;
+  height: 18.75rem;
+  overflow: hidden;
+  border-radius: 1.25rem;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+}
+.tabs__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1.875rem;
+  width: 100%;
+  height: 18.75rem;
+  font-weight: 700;
+  color: var(--color-dark);
+  background-color: var(--color-white);
+}
+.tabs__content:not(.is-visible):not(.is-back) {
+  display: none;
+}
+.tabs__content.is-forward {
+  z-index: 2;
+  pointer-events: auto;
+  animation-name: tab-forward;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+@keyframes tab-forward {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(-150%, -50%);
+  }
+  30% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+  }
+}
+.tabs__content.is-back {
+  z-index: 1;
+  pointer-events: none;
+  animation-name: tab-back;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: both;
+}
+@keyframes tab-back {
+  0% {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%);
+  }
+  70% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    opacity: 0;
+    visibility: hidden;
+    transform: translate(50%, -50%);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

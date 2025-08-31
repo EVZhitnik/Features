@@ -4,7 +4,6 @@
     &__inner {
         @include flexbox(true, center, center);
 
-        padding: rem(100) rem(30);
         background-color: var(--color-gray-1);
     }
 

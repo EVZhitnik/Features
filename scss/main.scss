@@ -30,8 +30,11 @@
 @use 'blocks/button.scss';
 @use 'blocks/todo-item.scss';
 
-.header,
-main > *:not(:last-child),
-.footer {
-    display: none !important;
-}
+@use 'blocks/tablist.scss';
+@use 'blocks/tabs.scss';
+
+// .header,
+// main > *:not(:last-child),
+// .footer {
+//     display: none !important;
+// }
