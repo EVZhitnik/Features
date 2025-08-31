@@ -1,0 +1,103 @@
+@use 'helpers' as *;
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    column-gap: rem(12);
+    padding-left: rem(10);
+    border: var(--border);
+    border-radius: var(--border-radius);
+    transition-duration: var(--transition-duration);
+
+    @include hover {
+        background-color: var(--color-gray-1);
+    }
+
+    &.is-disappearing {
+        opacity: 0;
+        translate: 0 -75%;
+        transition-duration: calc(var(--transition-duration) * 2);
+        pointer-events: none;
+
+        & ~ .todo-item {
+            translate: 0 calc((100% + var(--todoListRowGap)) * -1);
+            transition-delay: var(--transition-duration);
+            transition-duration: var(--transition-duration);
+            pointer-events: none;
+        }
+    }
+
+    &__checkbox {
+        @include square(rem(20));
+
+        flex-shrink: 0;
+        appearance: none;
+        position: relative;
+        margin: 0;
+        border: rem(1) solid var(--color-gray-4);
+        border-radius: rem(4);
+
+        &:not(:checked) {
+            &::after {
+                opacity: 0;
+            }
+        }
+
+        &:checked {
+            background-color: var(--color-dark-2);
+            border-color: var(--color-dark-2);
+
+            & + .todo-item__label {
+                color: var(--color-gray-4);
+                text-decoration: line-through;
+            }
+        }
+
+        &::after {
+            @include abs-position(both);
+            @include square(rem(16));
+
+            content: '';
+            background: url('../icon/icon-chek_white.svg') center/contain no-repeat;
+
+        }
+    }
+
+    &__label {
+        width: 100%;
+        pointer-events: none;
+    }
+
+    &__delete {
+        &-button {
+            @include flexbox(false, center, center);
+            @include square(rem(44));
+
+            flex-shrink: 0;
+            margin-left: auto;
+            padding: 0;
+            color: var(--color-gray-4);
+            background-color: transparent;
+            border: none;
+            border-radius: inherit;
+
+            @include hover {
+                background-color: var(--color-dark-1);
+
+                svg {
+                    path {
+                        stroke: var(--color-white);
+                    }
+                }
+            }
+
+            &:active {
+                scale: 1.05;
+            }
+
+            * {
+                pointer-events: none;
+            }
+        }
+    }
+}

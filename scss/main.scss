@@ -25,6 +25,11 @@
 
 @use 'blocks/animation.scss';
 
+@use 'blocks/todo.scss';
+@use 'blocks/field.scss';
+@use 'blocks/button.scss';
+@use 'blocks/todo-item.scss';
+
 .header,
 main > *:not(:last-child),
 .footer {
