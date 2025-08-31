@@ -23,8 +23,10 @@
 
 @use 'blocks/modal.scss';
 
-// .header,
-// main > *:not(:last-child),
-// .footer {
-//     display: none !important;
-// }
+@use 'blocks/animation.scss';
+
+.header,
+main > *:not(:last-child),
+.footer {
+    display: none !important;
+}

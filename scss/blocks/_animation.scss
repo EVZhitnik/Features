@@ -1,0 +1,151 @@
+@use 'helpers' as *;
+
+.animation {
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        row-gap: rem(30);
+        margin-bottom: rem(30);
+        width: 100%;
+    }
+
+    &__button {
+        padding: rem(10) clamp(rem(15), calc(50 / 1440 * 100vw), rem(50));
+        font-weight: 800;
+        color: var(--color-grey);
+        background-color: var(--color-blue);
+        border-radius: rem(10);
+        border: none;
+        transform: scale(1);
+        transition: transform 0.1s ease-in-out;
+
+        @include hover {
+            background-color: var(--color-dark-grey);
+        }
+
+        &:active {
+            transform: scale(1.05);
+            transform: translateY(rem(5));
+        }
+    }
+
+    &__notice {
+        display: none;
+        width: rem(400);
+        height: rem(200);
+        color: var(--color-white);
+        background-color: var(--color-gray-4);
+        border-radius: rem(20);
+        padding: 1rem;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateX(-100%);
+
+        &.is-visible {
+           @include flexbox (true, center, center); 
+        }
+
+        &.is-forward {
+            animation-name: notice-forward;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: both;
+
+            @keyframes notice-forward {
+                0% {
+                    transform: translateX(-100%);
+                    rotate: 0deg;
+                }
+                100% {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateX(0%);
+                    rotate: 360deg;
+                }
+            }
+        }
+
+        &.is-back {
+            animation-name: notice-back;
+            animation-duration: 1s;
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: both;
+
+            @keyframes notice-back {
+                0% {
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateX(0%);
+                    rotate: -360deg;
+                }
+                100% {
+                    opacity: 0;
+                    visibility: hidden;
+                    transform: translateX(100%);
+                    rotate: 0deg;
+                }
+            }
+        }
+    }
+
+    &__text {
+        font-weight: 700;
+    }
+
+    &__menu {
+        display: flex;
+        justify-content: center;
+
+        &-list {
+            display: flex;
+            background-color: var(--color-blue);
+            border-radius: rem(10) rem(10) 0 0;
+        }
+
+        &-item {
+            position: relative;
+
+            @include hover {
+                .animation__menu-submenu {
+                    display: block;
+                }
+            }
+        }
+
+        &-link {
+            color: var(--color-white);
+            font-weight: 800;
+            padding: rem(20);
+        }
+
+        &-submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            border-radius: 0 0 rem(8) rem(8);
+            background-color: var(--color-blue);
+            color: var(--color-white);
+            padding: rem(20);
+            z-index: 100;
+            animation: fadeIn 0.3s ease;
+
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(rem(50));
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+
+            &-link {
+                font-weight: 800;
+            }
+        }
+    }
+}
