@@ -61,7 +61,7 @@ class Todo {
         localStorage.setItem(this.localStorageKey, JSON.stringify(this.state.items));
     }
 
-    render () {
+    render() {
         this.totalTasksElement.textContent = this.state.items.length;
 
         this.deleteAllButtonElement.classList.toggle(this.stateClasses.isVisible, this.state.items.length > 0);
@@ -179,7 +179,6 @@ class Todo {
 
         if (isConfirmed) {
             this.state.items = [];
-
         }
 
         this.saveItemsToLocalStorage();
