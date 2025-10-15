@@ -7,6 +7,7 @@ import ModalWindow from './ModalWindow.js';
 import Notice from './Animation.js';
 import ToDoList from './ToDoList.js';
 import Tabs from './Tabs.js';
+import Slider from './Slider.js';
 
 new Carousel();
 new Vercarousel();
@@ -17,3 +18,4 @@ new ModalWindow();
 new ToDoList();
 new Notice();
 new Tabs();
+new Slider();
